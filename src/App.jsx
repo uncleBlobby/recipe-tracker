@@ -24,7 +24,7 @@ function App() {
   }
 
   const IngredientRow = () => {
-    console.log(`here`)
+    //console.log(`here`)
     return (
       <tr>
       <td>
@@ -36,10 +36,16 @@ function App() {
       <td>
         <input defaultValue={`Ingredient`}/>
       </td>
-        <td>
-          <button className="AddIngredientButton" onClick={() => AddIngredientRow()}>+</button>
-        </td>
+
       </tr>
+    )
+  }
+
+  const AddIngredientButton = () => {
+    return (
+    <td>
+      <button className="AddIngredientButton" onClick={() => AddIngredientRow()}>+</button>
+    </td>
     )
   }
 
@@ -54,6 +60,7 @@ function App() {
         </thead>
         <tbody>
         {ingredients.map((ingredient, i) => <IngredientRow key={i} />)}
+        <AddIngredientButton />
         </tbody>
       </table>
        
