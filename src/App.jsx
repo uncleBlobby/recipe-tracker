@@ -23,7 +23,7 @@ function App() {
     setIngredients([...ingredients, newIngredientItem])
   }
 
-  const IngredientRow = () => {
+  const IngredientRow = ( {ingredient}) => {
     //console.log(`here`)
     return (
       <tr>
@@ -36,10 +36,46 @@ function App() {
       <td>
         <input defaultValue={`Ingredient`}/>
       </td>
+      <ConfirmIngredientButton />
 
       </tr>
     )
   }
+
+  const ConfirmedIngredientRow = (quantity, units, ingredient) => {
+    return (
+      <tr>
+      <td>
+        {quantity} 
+      </td>
+      <td>
+        {units}
+      </td>
+      <td>
+        {ingredient}
+      </td>
+      <EditIngredientButton />
+
+      </tr> 
+    )
+  }
+
+  const ConfirmIngredientButton = () => {
+    return (
+      <td>
+        <button className="ConfirmIngredientButton"> Add! </button>
+      </td>
+    )
+  }
+  
+  const EditIngredientButton = () => {
+    return (
+      <td>
+        <button className="EditIngredientButton"> Edit </button>
+      </td>
+    )
+  }
+
 
   const AddIngredientButton = () => {
     return (
