@@ -113,7 +113,7 @@ function App() {
 
   return (
     <div className="App">
-      Recipe Name: <input />
+      Recipe Name: <input /> Date: <input placeholder='DD-MM-YY' /> Batch: <input placeholder='Batch No.' />
       <table className="MainTable">
         <thead>
           <tr>
