@@ -11,6 +11,10 @@ function App() {
     name: "",
   }])
 
+  const [ingredientInput, updateIngredientInput] = useState({})
+
+  const [currentQTYInput, setCurrentQTYInput] = useState('')
+
   const [ingredientRows, setIngredientRows] = useState(1)
 
   const AddIngredientRow = () => {
@@ -23,20 +27,34 @@ function App() {
     setIngredients([...ingredients, newIngredientItem])
   }
 
-  const IngredientRow = ( {ingredient}) => {
+  const InputBoxScanner = (inputType, event) => {
+    console.log(`${inputType}: ${event.target.value}`);
+  }
+  
+  const QTYInputScanner = (event) => {
+    console.log(`QTY: ${event.target.value}`)
+    // TODO: this is currently broken -- updating the state results in a re-render and clears the input
+    // should not be clearing the input box
+    // SOLUTION: do not update the state until the data is ready to be committed 
+    // Move state update to green checkmark button
+    //setCurrentQTYInput(event.target.value);
+    
+  }
+
+  const IngredientRow = () => {
     //console.log(`here`)
     return (
       <tr>
       <td>
-        <input className="QuantityInput" defaultValue={`Quantity`}/> 
+        <input onChange={() => QTYInputScanner(event)} id="QTYInput" className="QuantityInput" placeholder='Quantity' /> 
       </td>
       <td>
-        <input className="ShortInput" defaultValue={`Units`}/> 
+        <input className="ShortInput" placeholder='Units'/> 
       </td>
       <td>
-        <input defaultValue={`Ingredient`}/>
+        <input className="IngredientNameInput" placeholder='Ingredient Name'/>
       </td>
-      <ConfirmIngredientButton />
+      <ConfirmIngredientButton quantity={currentQTYInput}/>
 
       </tr>
     )
@@ -60,12 +78,16 @@ function App() {
     )
   }
 
-  const ConfirmIngredientButton = () => {
+  const ConfirmIngredientButton = (quantity) => {
     return (
       <td>
-        <button className="ConfirmIngredientButton"> Add! </button>
+        <button className="ConfirmButton" onClick={() => ConfirmIngredientButtonFunction(quantity)} />
       </td>
     )
+  }
+
+  const ConfirmIngredientButtonFunction = (quantity) => {
+    console.log(`confirmed ingredient: QTY: ${quantity}`)
   }
   
   const EditIngredientButton = () => {
@@ -79,9 +101,11 @@ function App() {
 
   const AddIngredientButton = () => {
     return (
+      <tr>
     <td>
       <button className="AddIngredientButton" onClick={() => AddIngredientRow()}>+</button>
     </td>
+    </tr>
     )
   }
 
@@ -92,7 +116,9 @@ function App() {
       Recipe Name: <input />
       <table className="MainTable">
         <thead>
-      Ingredients:
+          <tr>
+            <th>Ingredients:</th>
+          </tr>
         </thead>
         <tbody>
         {ingredients.map((ingredient, i) => <IngredientRow key={i} />)}

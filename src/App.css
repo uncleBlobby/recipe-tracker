@@ -47,6 +47,16 @@ button {
 
 .ShortInput {
   width: 3rem;
+  height: 1.5rem;
+}
+
+.IngredientNameInput {
+  height: 1.5rem;
+}
+
+.QuantityInput {
+  width: 8rem;
+  height: 1.5rem;
 }
 
 .AddIngredientButton {
@@ -56,6 +66,21 @@ button {
   font-size: 0.5rem;
 }
 
-.QuantityInput {
-  width: 8rem;
+.ConfirmButton {
+  box-sizing: content-box;
+  height: 1.5rem;
+  width: 1.5rem;
+  background-image: url('../assets/images/Checkmark.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 15%;
+  background-color: rgb(115, 255, 115);
+  border: 1px solid green;
+  margin: auto;
 }
+
+.ConfirmButton:hover {
+  border: 2px solid green;
+}
+
