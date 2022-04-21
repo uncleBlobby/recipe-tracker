@@ -28,7 +28,7 @@ function App() {
     return (
       <tr>
       <td>
-        <input defaultValue={`Quantity`}/> 
+        <input className="QuantityInput" defaultValue={`Quantity`}/> 
       </td>
       <td>
         <input className="ShortInput" defaultValue={`Units`}/> 

@@ -51,7 +51,11 @@ button {
 
 .AddIngredientButton {
   height: 1.5rem;
-  width: 1.5rem;
+  width: 8rem;
   padding: none;
   font-size: 0.5rem;
+}
+
+.QuantityInput {
+  width: 8rem;
 }
