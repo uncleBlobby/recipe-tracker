@@ -32,21 +32,25 @@ function App() {
   }
   
   const QTYInputScanner = (event) => {
+    event.preventDefault()
     console.log(`QTY: ${event.target.value}`)
     // TODO: this is currently broken -- updating the state results in a re-render and clears the input
     // should not be clearing the input box
     // SOLUTION: do not update the state until the data is ready to be committed 
     // Move state update to green checkmark button
-    //setCurrentQTYInput(event.target.value);
-    
+    // setCurrentQTYInput(event.target.value);
+    //let QTYinput = event.target.value;
+    //console.log(`QTYinput: ${QTYinput}`)
   }
 
   const IngredientRow = () => {
-    //console.log(`here`)
+
+
     return (
+
       <tr>
       <td>
-        <input onChange={() => QTYInputScanner(event)} id="QTYInput" className="QuantityInput" placeholder='Quantity' /> 
+        <input onChange={() => QTYInputScanner(event)} id='QTYInput' className="QuantityInput" placeholder='Quantity' /> 
       </td>
       <td>
         <input className="ShortInput" placeholder='Units'/> 
@@ -54,11 +58,13 @@ function App() {
       <td>
         <input className="IngredientNameInput" placeholder='Ingredient Name'/>
       </td>
-      <ConfirmIngredientButton quantity={currentQTYInput}/>
-
+      <ConfirmIngredientButton quantity={"test"}/>
       </tr>
+
     )
   }
+
+  
 
   const ConfirmedIngredientRow = (quantity, units, ingredient) => {
     return (
@@ -79,15 +85,16 @@ function App() {
   }
 
   const ConfirmIngredientButton = (quantity) => {
+
     return (
       <td>
-        <button className="ConfirmButton" onClick={() => ConfirmIngredientButtonFunction(quantity)} />
+        <button type="submit" className="ConfirmButton" onClick={() => ConfirmIngredientButtonFunction(quantity)} />
       </td>
     )
   }
 
   const ConfirmIngredientButtonFunction = (quantity) => {
-    console.log(`confirmed ingredient: QTY: ${quantity}`)
+    console.log(`confirmed ingredient: QTY: ${JSON.stringify(quantity)}`)
   }
   
   const EditIngredientButton = () => {
